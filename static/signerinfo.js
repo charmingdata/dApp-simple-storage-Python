@@ -56,7 +56,9 @@ async function sendTransaction(message) {
   const txResponse = await signer.sendTransaction(unsignedTrx);
 
   console.log(`Transaction signed and sent: ${txResponse.hash}`);
-
+  
+  // wait for transaction to be processed
+  await txResponse.wait(1);
 }
 // expose the transaction to the clientside callback
 window.sendTransaction = sendTransaction
